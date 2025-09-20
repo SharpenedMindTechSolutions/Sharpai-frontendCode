@@ -42,6 +42,7 @@ function ATSCheckerCreate() {
 
     useEffect(() => {
         if (resumeText && jobDescription) {
+            console.log("Calculating ATS Score...");
             const result = calculateScore(resumeText, jobDescription);
             setScoringResult(result);
         }

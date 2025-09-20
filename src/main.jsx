@@ -11,13 +11,19 @@ import DreamBoxFormLayout from "./Dreambox Module/DreamBoxFromLayout";
 import ResumeBoxHome from "./ResumeBox/Pages/ResumeBoxHome";
 import RecuriterRegister from "./ResumeBox/Components/RecuriterRegister";
 import RecuriterLogin from "./ResumeBox/Components/RecuriterLogin";
-import VerifyCode from "./ResumeBox/Components/VerifyCode";
+import VerifyCode from "./ResumeBox/Components/Verifycode";
 import ResetPassword from "./ResumeBox/Components/ResetPassword";
 import ForgotPassword from "./ResumeBox/Components/ForgotPassword";
 import RecuriterLayout from "./ResumeBox/Pages/RecuriterLayout";
 import RecuriterCandiateResume from "./ResumeBox/Pages/RecuriterCandiateResume";
 import RecuriterSetting from "./ResumeBox/Pages/RecuriterSetting";
 import RecuriterDashboard from "./ResumeBox/Pages/RecuriterDashboard";
+
+
+
+
+
+
 
 // Lazy load components
 const Home = lazy(() => import("./components/home/LandingPage"));
@@ -27,19 +33,11 @@ const Signin = lazy(() => import("./components/auth/SignIn"));
 const Signup = lazy(() => import("./components/auth/Signup"));
 const CreateResume = lazy(() => import("./components/custom/CreateResume"));
 const ResumeView = lazy(() => import("./components/Download-view/ResumeView"));
-const AtsCheckerMain = lazy(() =>
-  import("./components/custom/AtsChecker/AtsCheckerMain")
-);
+const AtsCheckerMain = lazy(() => import("./components/custom/AtsChecker/AtsCheckerMain"));
 const AdminLogin = lazy(() => import("./components/custom/Admin/Adminlogin"));
-const AdminRegister = lazy(() =>
-  import("./components/custom/Admin/AdminRegister")
-);
-const AdminDashboard = lazy(() =>
-  import("./components/custom/Admin/AdminDashboard")
-);
-const AdminDashboardUser = lazy(() =>
-  import("./components/custom/Admin/AdminDashboardUser")
-);
+const AdminRegister = lazy(() => import("./components/custom/Admin/AdminRegister"));
+const AdminDashboard = lazy(() => import("./components/custom/Admin/AdminDashboard"));
+const AdminDashboardUser = lazy(() => import("./components/custom/Admin/AdminDashboardUser"));
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const clerkFrontendApi = import.meta.env.VITE_CLERK_FRONTEND_API;
@@ -53,9 +51,7 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <Home />
         </Suspense>
       ),
@@ -63,9 +59,7 @@ const router = createBrowserRouter(
     {
       path: "/admin.login",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <AdminLogin />
         </Suspense>
       ),
@@ -73,9 +67,7 @@ const router = createBrowserRouter(
     {
       path: "/admin.register",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <AdminRegister />
         </Suspense>
       ),
@@ -83,9 +75,7 @@ const router = createBrowserRouter(
     {
       path: "/admin.dashboard",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <AdminDashboard />
         </Suspense>
       ),
@@ -93,9 +83,7 @@ const router = createBrowserRouter(
     {
       path: "/admin.dashboard/user",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <AdminDashboardUser />
         </Suspense>
       ),
@@ -103,9 +91,7 @@ const router = createBrowserRouter(
     {
       path: "/admin.dashboard/user-download",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <AdminUserResumeDownload />
         </Suspense>
       ),
@@ -113,19 +99,15 @@ const router = createBrowserRouter(
     {
       path: "/admin.dashboard/user-download/:resumeId",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <ResumeDownloadData />
         </Suspense>
       ),
     },
     {
-      path: "auth/sign-in", 
+      path: "auth/sign-in",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <Signin />
         </Suspense>
       ),
@@ -133,9 +115,7 @@ const router = createBrowserRouter(
     {
       path: "auth/sign-up",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <Signup />
         </Suspense>
       ),
@@ -144,9 +124,7 @@ const router = createBrowserRouter(
     {
       path: "dreambox",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <ResumeBoxHome />
         </Suspense>
       ),
@@ -154,19 +132,14 @@ const router = createBrowserRouter(
     {
       path: "dreambox-form",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <DreamBoxFormLayout />
         </Suspense>
       ),
-    },
-    {
+    }, {
       path: "dreambox-dashboard/:id",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <DreamDashboard />
         </Suspense>
       ),
@@ -175,109 +148,80 @@ const router = createBrowserRouter(
     {
       path: "ResumeBox",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <ResumeBoxHome />
         </Suspense>
-      ),
-    },
-    {
+      )
+    }, {
       path: "Recuriterregister",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <RecuriterRegister />
         </Suspense>
-      ),
-    },
-    {
+      )
+    }, {
       path: "Recuriterlogin",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <RecuriterLogin />
         </Suspense>
-      ),
+      )
     },
     {
       path: "/Recuriter-Resetpassword/:token",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <ResetPassword />
         </Suspense>
-      ),
-    },
-    {
+      )
+    }, {
       path: "RecuriterForgotpassword",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <ForgotPassword />
         </Suspense>
-      ),
-    },
-    {
+      )
+    }, {
       path: "VerifyCode",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <VerifyCode />
         </Suspense>
-      ),
-    },
-    {
+      )
+    }, {
       path: "Recuriter",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <RecuriterLayout />
         </Suspense>
-      ),
-    },
-    {
+      )
+    }, {
       path: "Dashboard",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <RecuriterDashboard />
         </Suspense>
-      ),
-    },
-    {
+      )
+    }, {
       path: "Candiateresume",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <RecuriterCandiateResume />
         </Suspense>
-      ),
+      )
     },
     {
       path: "Setting",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <RecuriterSetting />
         </Suspense>
-      ),
+      )
     },
     {
       path: "my-resume/:resumeId/view",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <ResumeView />
         </Suspense>
       ),
@@ -286,9 +230,7 @@ const router = createBrowserRouter(
     {
       path: "*",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <Error />
         </Suspense>
       ),
@@ -296,9 +238,7 @@ const router = createBrowserRouter(
     {
       path: "/atschecker",
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <AtsCheckerMain />
         </Suspense>
       ),
@@ -306,9 +246,7 @@ const router = createBrowserRouter(
 
     {
       element: (
-        <Suspense
-          fallback={<div className="text-center mt-10">Loading...</div>}
-        >
+        <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
           <App />
         </Suspense>
       ),
@@ -316,9 +254,7 @@ const router = createBrowserRouter(
         {
           path: "newresume",
           element: (
-            <Suspense
-              fallback={<div className="text-center mt-10">Loading...</div>}
-            >
+            <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
               <Dashboard />
             </Suspense>
           ),
@@ -326,9 +262,7 @@ const router = createBrowserRouter(
         {
           path: "newresume/resume/:resumeId/edit",
           element: (
-            <Suspense
-              fallback={<div className="text-center mt-10">Loading...</div>}
-            >
+            <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
               <CreateResume />
             </Suspense>
           ),
@@ -343,42 +277,14 @@ const router = createBrowserRouter(
   }
 );
 
+
+
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ClerkProvider
-      publishableKey={PUBLISHABLE_KEY}
-      frontendApi={clerkFrontendApi}
-    >
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} frontendApi={clerkFrontendApi}>
       <RouterProvider router={router} future={{ v7_startTransition: true }} />
-      {/* <div class="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-        <div class="max-w-md w-full bg-white shadow-lg rounded-lg p-6 border border-yellow-300">
-          <div class="flex items-center space-x-4">
-            <svg
-              class="w-10 h-10 text-yellow-500"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <div>
-              <h2 class="text-lg font-semibold text-gray-800">
-                Work in Progress
-              </h2>
-              <p class="text-sm text-gray-600 mt-1">
-                We're currently updating repository details and configuration.
-                Please check back shortly.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </ClerkProvider>
   </React.StrictMode>
 );
